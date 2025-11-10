@@ -157,8 +157,8 @@ def crearRegistro(id):
     
     registro = f'{gen};{nombre};{secuencia};{organismo};{longitud};{funcion};{es_mutante};{secuencia_mutante}\n'
     return registro
-
-ruta = os.path.join("C:\\Users\\fran\\Desktop\\facu\\2º 2025\\Progra 1\\TP0", "registros.txt")
+#La ruta no me daba, chat ayudo
+ruta = os.path.join("C:\\Users\\fran\\Desktop\\facu\\2º 2025\\Progra 1\\TP0\\TPO-Progra1", "registros.txt")
 archivo = open(ruta, mode='w', encoding ='utf-8')
 
 for i in range(1, 11):
