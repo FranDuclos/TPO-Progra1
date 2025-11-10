@@ -452,6 +452,7 @@ def encontrar_snp(secuencia, secuencia_mutante):
             snps.append(snp)
     
     return snps
+
 def calcular_contenido_nucleotido(secuencia):
     """
     Calcula el procentaje de GC de la secuencia, es un dato clave
@@ -460,6 +461,13 @@ def calcular_contenido_nucleotido(secuencia):
     gc = secuencia.count('G') + secuencia.count('C')
     at = secuencia.count('A') + secuencia.count('T')
     return (gc / len(secuencia)) * 100, (at / len(secuencia)) * 100
+
+
+def convetir_a_json(diccionario):
+    with open("genes.json", "w", encoding="utf-8") as archivo:
+        json.dump(diccionario, archivo, indent=4, ensure_ascii=False)
+    print("✅ Diccionario guardado como 'genes.json'")
+    
 
 def main():
     path = "registros.txt"
@@ -526,7 +534,7 @@ def main():
             print("[3] Opción 3: Agregar gen/es")
             print("[4] Opción 4: Eliminar/Modificar gen/genes")
             print("[5] Opción 5: Analizar gen")
-            print("[6] Crear base de genes")
+            print("[6] Opción 6: Guardar en Json")
             print("[0] Salir del programa")
             print("---------------------------")
             print()
@@ -551,6 +559,9 @@ def main():
             
             elif opcion == "5":
                 analizar_genes(diccionario)
+            
+            elif opcion =="6":
+                convetir_a_json(diccionario)
             
             
 main()

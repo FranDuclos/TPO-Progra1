@@ -1,0 +1,92 @@
+{
+    "GEN001": {
+        "nombre": "LHCLJ",
+        "secuencia": "CTCGATACGTTACAATAATATCGCAATCTGTCACT",
+        "organismo": "Oryza sativa",
+        "longitud": 35,
+        "funcion": "Síntesis de ribosomas",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN002": {
+        "nombre": "ZTOPS",
+        "secuencia": "CCTATTAACACAGGA",
+        "organismo": "Salmonella enterica",
+        "longitud": 15,
+        "funcion": "Secreción de enzimas",
+        "es_mutante": false,
+        "secuencia_mutante": "CCTATTAACACAGGT"
+    },
+    "GEN003": {
+        "nombre": "TFTPC",
+        "secuencia": "ACGATCACTCACCTTACATTGGTTCTCCTATATATTTGGCCCCGGAAGCATGGGATGGGTCTCGACCCAAGTGAAAATCTTATCATCCGTGA",
+        "organismo": "Drosophila melanogaster",
+        "longitud": 92,
+        "funcion": "Síntesis de carotenoides",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN004": {
+        "nombre": "DYTZT",
+        "secuencia": "TACTTGCGTGGCCCAAGGTAAATGTCTCGCGTAGATTTGTACCTCTTAGGAAGACAACTATCGATCGACTAGGATTATAGAGCCGGCTTGCGCT",
+        "organismo": "Leishmania donovani",
+        "longitud": 94,
+        "funcion": "Síntesis de ácido láctico",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN005": {
+        "nombre": "MHUGJ",
+        "secuencia": "GCTGCCTTGCGCGC",
+        "organismo": "Pseudomonas aeruginosa",
+        "longitud": 14,
+        "funcion": "Regulación del pH intracelular",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN006": {
+        "nombre": "VPHBN",
+        "secuencia": "GTGTGGAAGTTATTTCGTTCAACGCTTACATCGTGGGTTCATACCCAATCACTTCATAGTTACGCCCTATATCAGTAGAGAATTGCGGCTATGCTGTAACCACCCTCAGCTGTCCGTTTCGGCTGTTCGGC",
+        "organismo": "Arabidopsis thaliana",
+        "longitud": 131,
+        "funcion": "Síntesis de ácido láctico",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN007": {
+        "nombre": "VABIY",
+        "secuencia": "CCTGCACTCCCATCGCCGAAAACTTCTTGCCAGAAAAAGACGGGATACAGGGCCAAAGTTACGGGGGGGTAGAGATACGTCCTATCCATCTTAGGCTACCAACGAAATATCAAGCGACGCTGGTACTAAGGGTACATCGATACGCCAGATGCATACTGTGTCGCTGTGCGTGTACCA",
+        "organismo": "Homo sapiens",
+        "longitud": 177,
+        "funcion": "Degradación de grasas",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN008": {
+        "nombre": "EJVQN",
+        "secuencia": "GTCGCATCATAGTGCTGCGACTCCCTTTCGGCCTAATTTGAGCGATGCCATTCGGGCCATATTGATCCGCCGCAGGCCCGAAAGATGTACTTTAGCACA",
+        "organismo": "Canis lupus familiaris",
+        "longitud": 99,
+        "funcion": "Síntesis de ADN polimerasa",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN009": {
+        "nombre": "VOIED",
+        "secuencia": "GGTAACGGTTCACAGGTCT",
+        "organismo": "Neisseria meningitidis",
+        "longitud": 19,
+        "funcion": "Síntesis de enzimas digestivas",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN010": {
+        "nombre": "XZUDR",
+        "secuencia": "ACTGTCCCTTTCGCCCAATCCGAATTCGTATTAACGGACCAACACCTTCCAAGTCTCGGACCGGATAAACCGATGAGGGAGTCGTCGTGCGAACACTTAACGAA",
+        "organismo": "Gallus gallus",
+        "longitud": 104,
+        "funcion": "Formación de microtúbulos",
+        "es_mutante": false,
+        "secuencia_mutante": "ACTGTCCCTTTCGCCCAATCCGAATTCGTATTAACGGACCAAGACCTTCCAAGTCTCGGACCGGATAAACCGATGAGGGAGTCGTCGTGCGAACACTTAACGAA"
+    }
+}
