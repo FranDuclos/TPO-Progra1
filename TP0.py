@@ -2,9 +2,9 @@
 import CrearGenes
 import os
 import json
-import numpy as np
 
-def crear_base_datos(path):  
+
+def crear_base_datos(path, json_path):  
     """
     Nos permite crear una base de datos con una cantidad de genes X, a partir del .py CrearGenes que importamos
     """
@@ -32,20 +32,33 @@ def crear_base_datos(path):
                 for i in range(1, cantidad + 1):
                     archivo.write(CrearGenes.crearRegistro(i))
                     
-            print(f"Base de datos creada exitosamente con {cantidad} genes en {path}")
+            print(f"TXT creado exitosamente con {cantidad} genes en {path}")
             
             print("\nConvirtiendo a diccionario...")
             
             #Convertimos directamente a diccionario :)
-            diccionario = convertir_a_diccionario(path)
+            diccionario = convertir_txt_a_diccionario(path)
+
             if diccionario:
                 print(f"✓ Diccionario creado con {len(diccionario)} genes")
+
+            else:
+                print("Error al crear el diccionario")
+
+            print("\n Guardando diccionario en JSON...")
+            if guardar_a_json(diccionario, json_path):
+                print(f"Base de datos completada exitosamente")
+                print(f"- TXT fuente: {path}")
+                print(f"- JSON activo: {json_path}")
 
                 ver = input("\n¿Desea visualizar el diccionario creado? (si/no): ").lower()
                 if ver == "si":
                     mostrar_diccionario(diccionario)
-            
-            break
+
+                return diccionario
+            else:
+                print("Error al guardar el JSON")
+                return None
         
         except ValueError:
             print("Error, por favor ingrese un número válido.")
@@ -53,7 +66,7 @@ def crear_base_datos(path):
             print(f"Error al crear el archivo: {detalle}")
             break
     
-def convertir_a_diccionario(path):
+def convertir_txt_a_diccionario(path):
     """
     Lee el TXT y lo convierte a diccionario
     """
@@ -78,12 +91,47 @@ def convertir_a_diccionario(path):
         return diccionario_genes
     
     except FileNotFoundError:
-        print(f"Error: El archivo '{path}' no existe.")
+        print(f"✘ Error: El archivo '{path}' no existe.")
         return {}
     except (OSError, IOError) as detalle:
-        print(f"Error al leer el archivo: {detalle}")
+        print(f"✘ Error al leer el archivo: {detalle}")
         return {}
 
+def cargar_json(json_path):
+    """
+    Carga el diccionario desde JSON
+    """
+    if not os.path.exists(json_path):
+        print(f"✘ El archio '{json_path}' no existe")
+        print(" Debe crear la basde de datos primero (Opción 1)")
+        return None
+    
+    try:
+        with open(json_path, "r", encoding="utf-8") as archivo:
+            diccionario = json.load(archivo)
+            return diccionario
+    except json.JSONDecodeError:
+        print(f"✘ Error: El archivo '{json_path}' está corrupto o vacío.")
+        return None
+    except Exception as e:
+        print(f"✘ Error al cargar JSON: {e}")
+        return None
+    
+
+def guardar_a_json(diccionario, json_path):
+    """
+    Guarda el diccionario en JSON.
+    Se llama post cada modificación
+    """
+    try:
+        with open(json_path, "w", encoding="utf-8") as archivo:
+            json.dump(diccionario, archivo, indent=4, ensure_ascii=False)
+        print(f"✔ Diccionario guardado como '{json_path}'")
+        return True
+    except Exception as e:
+        print(f"✘ Error al guardar el JSON {e}")    
+        return False
+        
 def mostrar_diccionario(diccionario):
     """
     Muestra el contenido del diccionario de genes
@@ -108,7 +156,7 @@ def visualizar_genes(diccionario):
     try:
         if not diccionario:
             print("El diccionario está vacío.")
-            return None
+            return 
         
         print(f"\n{'='*50}")
         print("GENES DISPONIBLES:")
@@ -133,7 +181,7 @@ def visualizar_genes(diccionario):
                     fila = [
                         gen_id,
                         datos["nombre"],
-                        datos["secuencia"][:20],
+                        datos["secuencia"][:20] + "...",
                         datos["organismo"],
                         datos["longitud"],
                         datos["funcion"],
@@ -141,7 +189,7 @@ def visualizar_genes(diccionario):
                         datos["secuencia_mutante"][:20] if datos["secuencia_mutante"] else None
                     ]
                     matriz.append(fila)
-                print(f"\n✓ Matriz creada con {len(matriz)-1} genes")
+                print(f"\n✔ Matriz creada con {len(matriz)-1} genes")
                 print(matriz)
             
             if opcion in ids:
@@ -159,7 +207,7 @@ def visualizar_genes(diccionario):
                         datos["secuencia_mutante"][:20] if datos["secuencia_mutante"] else None
                     ]
                 ]
-                print(f"\n✓ Matriz creada para el gen {opcion}")
+                print(f"\n✔ Matriz creada para el gen {opcion}")
                 print(matriz)
             else:
                 print("❌ ID no encontrado. Intenta nuevamente.")
@@ -167,10 +215,12 @@ def visualizar_genes(diccionario):
     except Exception as e:
         print(f"Error al visualizar genes: {e}")
         return None
+
     
-def agregar_genes(diccionario, organismos_vaidos, caracteres_validos):
+def agregar_genes(diccionario, organismos_vaidos, caracteres_validos, json_path):
     """
     Agregar genes al diccionario
+    Guardado en JSON automatico. 
     """
     try:
         ids = list(diccionario.keys())
@@ -179,7 +229,7 @@ def agregar_genes(diccionario, organismos_vaidos, caracteres_validos):
             print("IDs existentes:",",".join(ids))
         
         else:
-            print("No hay genes disponibles")
+            print("El diciconario está vacío")
 
         while True:
             if ids:
@@ -189,6 +239,7 @@ def agregar_genes(diccionario, organismos_vaidos, caracteres_validos):
                     numero = int(''.join([c for c in ultimo_id if c.isdigit()])) #Extraer el número del GEN que escribimos
                     nuevo_numero = numero + 1
                     gen_id = f"{prefijo}{nuevo_numero:03d}"
+                    
                 except ValueError:
                     gen_id = "GEN001" #Si hay error empieza con esta ID
 
@@ -206,28 +257,34 @@ def agregar_genes(diccionario, organismos_vaidos, caracteres_validos):
 
             #Verificar si existe    
             if gen_id in ids:
-                resp = input(f"{gen_id} ya existe. ¿Sobrescribir? (si/no): ").strip().lower()
+                resp = input(f"✘ {gen_id} ya existe. ¿Sobrescribir? (si/no): ").strip().lower()
                 if resp != "si":
                     print("No sobrescrito, ingrese otro ID: ")
                     continue
+            
+            
+            #Recopilar datos
                 
-            nombre = input("Nombre: ")
+            nombre = input("Nombre del gen: ")
 
             while True:     
                 organismo = input("Organismo: ")
                 if organismo not in organismos_vaidos:
-                    print(f"Organismo no valido ingrese uno valido {organismos_vaidos}: )")
+                    print(f"✘ Organismo no valido ingrese uno valido {organismos_vaidos}: )")
                 else:
                     break
+
             while True:
                 secuencia = input("Secuencia: ").upper()
                 if not all (c in caracteres_validos for c in secuencia) or len(secuencia) < 3:
-                    print("Secuencia no validos, ingrese de nuevo: ")
+                    print("✘ Secuencia no validos, ingrese de nuevo: ")
                 else: 
                     break
 
             longitud = len(secuencia)
+
             funcion = input("Función: ")
+
             es_mutante = input("¿Es mutante? (si/no): ").lower() == "si"
             
             if es_mutante == "si":
@@ -250,6 +307,8 @@ def agregar_genes(diccionario, organismos_vaidos, caracteres_validos):
             ids.append(gen_id)
             print(f"Gen {gen_id} agregado exitosamente al diccionario.\n")  # Confirmación
 
+            guardar_a_json(diccionario, json_path)
+
             continuar = input("¿Desea agregar otro gen? (si/no): ").lower()
             if continuar != "si":
                 break
@@ -263,9 +322,10 @@ def agregar_genes(diccionario, organismos_vaidos, caracteres_validos):
         print(f"Error inesperado: {e}")
         return diccionario
 
-def modificar_genes(diccionario, organismos_vaidos, caracteres_validos):
+def modificar_genes(diccionario, organismos_vaidos, caracteres_validos, json_path):
     """
     Eliminar/Modificar gen/es
+    Guardado automático en JSON
     """
     try:
         ids = list(diccionario.keys())
@@ -274,7 +334,7 @@ def modificar_genes(diccionario, organismos_vaidos, caracteres_validos):
             print("IDs existentes:",",".join(ids))
         
         else:
-            print("No hay genes disponibles")
+            print("El diccionario está vacío")
 
     
         while True:
@@ -284,7 +344,7 @@ def modificar_genes(diccionario, organismos_vaidos, caracteres_validos):
                 break
         
             if gen_id_input not in diccionario:
-                print(f"Error: el gen {gen_id_input} no existe.")
+                print(f"✘ Error: el gen {gen_id_input} no existe.")
                 continue
         
             datos = diccionario[gen_id_input]
@@ -311,30 +371,37 @@ def modificar_genes(diccionario, organismos_vaidos, caracteres_validos):
                 if confirmacion == "si":
                     del diccionario[gen_id_input]
                     print(f"✓ Gen {gen_id_input} borrado exitosamente.\n")
+
+                    #Guardado en JSON
+                    guardar_a_json(diccionario, json_path)
+
+
                 else:
                     print("Borrado cancelado.")
                 continue
             
             elif resp == "modificar":
-                print("\n Ingrese los nuevos datos")
-                nombre = input("Nombre: ")
+                print("\n--- Ingrese los nuevos datos ---")
+                nombre = input("Nombre del gen: ")
 
                 while True:
                     organismo = input("Organismo: ")
                     if organismo not in organismos_vaidos:
-                        print(f"Organismo no valido ingrese uno valido {organismos_vaidos}: )")
+                        print(f"✘ Organismo no valido ingrese uno valido {organismos_vaidos}: )")
                     else:
                         break
 
                 while True:
                     secuencia = input("Secuencia: ")
                     if not all (c in caracteres_validos for c in secuencia) or len(secuencia) < 3:
-                        print("Secuencia no validos, ingrese de nuevo: ")
+                        print("✘ Secuencia no validos, ingrese de nuevo: ")
                     else:
                         break
                     
                 longitud = len(secuencia)
+
                 funcion = input("Función: ")
+
                 es_mutante = input("¿Es mutante? (si/no): ").lower() == "si"
                 
                 if es_mutante == "si":
@@ -354,8 +421,11 @@ def modificar_genes(diccionario, organismos_vaidos, caracteres_validos):
                     "secuencia_mutante": secuencia_mutante
                 }
                 print(f"✓ Gen {gen_id_input} modificado exitosamente.\n")
+
+                guardar_a_json(diccionario, json_path)
+
             else:
-                print("Opción no valida. Usar: modificar/borrar/cancelar")
+                print("✘ Opción no valida. Usar: modificar/borrar/cancelar")
         
         return diccionario
 
@@ -368,6 +438,10 @@ def modificar_genes(diccionario, organismos_vaidos, caracteres_validos):
     
 
 def analizar_genes(diccionario):
+    """
+    Analiza genes: CG%, SNPs, Traducción
+    NO modifica el diccionario, por lo tanto NO guarda en JSON
+    """
     try:
         ids = list(diccionario.keys())
 
@@ -375,7 +449,7 @@ def analizar_genes(diccionario):
             print("IDs existentes:",",".join(ids))
         
         else:
-            print("No hay genes disponibles")
+            print("El diciconario está vacío")
 
     
         while True:
@@ -385,12 +459,14 @@ def analizar_genes(diccionario):
                 break
         
             if gen_id_input not in diccionario:
-                print(f"Error: el gen {gen_id_input} no existe.")
+                print(f"✘ Error: el gen {gen_id_input} no existe.")
                 continue
             
             
             datos = diccionario[gen_id_input]
+
             secuencia = datos['secuencia']
+            
             secuencia_mutante = datos["secuencia_mutante"]
 
             while True:
@@ -401,31 +477,36 @@ def analizar_genes(diccionario):
 
                 if respuesta.upper() == "CG%":
                     porcentaje_gc, porcentaje_at = calcular_contenido_nucleotido(secuencia)
+                    print(f"\n📊 Contenido de nucleótidos:")
                     print(f"Contenido de GC: {porcentaje_gc:.2f}%") #el .2f lo corta en 2 decimales.
                     print((f"Contenido de AT: {porcentaje_at:.2f}%"))
 
                 elif respuesta == "snps":
                     if secuencia_mutante != None:
                         resultado = encontrar_snp(secuencia, secuencia_mutante)
-                        for snp in resultado:
-                            print(f"Posición {snp['posicion']}: {snp['original']} → {snp['mutante']}")
+                        if resultado:
+                            (f"\n🧬 SNPs encontrados: {len(resultado)}")
+                            for snp in resultado:
+                                print(f"Posición {snp['posicion']}: {snp['original']} → {snp['mutante']}")
+                        else:
+                            print("\n No se encontrarón SNPs entre las secuencias")
                     else: 
                         print("No existen poliformismos")
 
                 elif respuesta == "traducir":
                     secuencia_traducida = traducir_secuencia(secuencia)
-                    print(f"La secuencia {secuencia}")
-                    print("traducida es:")
-                    print(f"{secuencia_traducida}")
+                    print(f"\n🔬 Traducción ADN → ARN:")
+                    print(f"    ADN:  {secuencia}")
+                    print(f"    ARN: {secuencia_traducida}")
                 else:
-                    print("Entrada no valida, intente de nuevo:")
+                    print("✘ Opción no válida. Use: CG / SNPs / Traducir / salir")
             
         
     except KeyError as e:
-        print(f"Error: clave no encontrada en el diccionario: {e}")
+        print(f"✘ Error: clave no encontrada en el diccionario: {e}")
         return diccionario
     except Exception as e:
-        print(f"Error inesperado: {e}")
+        print(f"✘ Error inesperado: {e}")
         return diccionario         
 
 def traducir_secuencia(secuencia): #No se si podmos usar replace, pero estaria bueno.
@@ -441,7 +522,8 @@ def encontrar_snp(secuencia, secuencia_mutante):
     Retorna la ubicación y que nucleotido ha cambiado.
     """
     snps = []
-    for i in range(len(secuencia)):
+    longitud_minima = min(len(secuencia), len(secuencia_mutante))
+    for i in range(longitud_minima):
         if secuencia[i] != secuencia_mutante[i]:
             snp = {
                 'posicion': i,
@@ -462,16 +544,20 @@ def calcular_contenido_nucleotido(secuencia):
     at = secuencia.count('A') + secuencia.count('T')
     return (gc / len(secuencia)) * 100, (at / len(secuencia)) * 100
 
+def predecir_proteína(secuencia):
+    #Recorrer secuencia en 3 en 3.
+    #Usar o diccionario o txt para que cod cada codón.
+    #Mostar posible prot
 
-def convetir_a_json(diccionario):
-    with open("genes.json", "w", encoding="utf-8") as archivo:
-        json.dump(diccionario, archivo, indent=4, ensure_ascii=False)
-    print("✅ Diccionario guardado como 'genes.json'")
-    
+    pass
+
+
+
+
 
 def main():
     path = "registros.txt"
-    diccionario = convertir_a_diccionario(path)
+    json_path = "genes.json"
     organismos_vaidos = ( "Escherichia coli",
     "Salmonella enterica",
     "Staphylococcus aureus",
@@ -523,7 +609,9 @@ def main():
     "Methanococcus jannaschii",
     "Halobacterium salinarum")
     caracteres_validos = ("A", "C", "G", "T")
+
     while True:
+            diccionario = convertir_a_diccionario(path)
             opciones = 4
             print()
             print("---------------------------")
@@ -541,27 +629,35 @@ def main():
             
             opcion = input("Seleccione una opción: ")
             
-
             if opcion == "0": 
                 break 
             
             elif opcion == "1":
-                crear_base_datos(path)
+                crear_base_datos(path, json_path)
 
-            elif opcion == "2":
-                visualizar_genes(diccionario)
-
-            elif opcion == "3":
-                agregar_genes(diccionario, organismos_vaidos, caracteres_validos)
-            
-            elif opcion == "4":
-                modificar_genes(diccionario, organismos_vaidos, caracteres_validos)
-            
-            elif opcion == "5":
-                analizar_genes(diccionario)
-            
-            elif opcion =="6":
-                convetir_a_json(diccionario)
-            
+            elif opcion in ["2", "3", "4", "5"]:
+            # Para cualquier otra operación, cargar desde JSON
+                if diccionario is None:
+                    diccionario = cargar_json(json_path)
+                
+                if diccionario is None:
+                    print("\n⚠️ No hay datos disponibles.")
+                    print("   Primero cree la base de datos (Opción 1)")
+                    continue
+                
+                if opcion == "2":
+                    visualizar_genes(diccionario)
+                
+                elif opcion == "3":
+                    diccionario = agregar_genes(diccionario, organismos_vaidos, caracteres_validos, json_path)
+                
+                elif opcion == "4":
+                    diccionario = modificar_genes(diccionario, organismos_vaidos, caracteres_validos, json_path)
+                
+                elif opcion == "5":
+                    analizar_genes(diccionario)
+        
+            else:
+                print("❌ Opción no válida. Intente nuevamente.")
             
 main()
