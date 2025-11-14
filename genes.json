@@ -1,154 +1,190 @@
 {
     "GEN001": {
-        "nombre": "PGUWE",
-        "secuencia": "TGGCAGTATCCAGCGCAAGAAATCAAACAGCGGAGTAACGACACGCAGTGGTCTGCGCTGCGG",
-        "organismo": "Sus scrofa",
-        "longitud": 63,
-        "funcion": "Fotosíntesis",
+        "nombre": "SJMYE",
+        "secuencia": "GACCTTTCGAATATCGTGCTAGCCTCTAGAGAGAAATCAGGGGGGTGGAATAACCCTAACCTCTTACTAGCATGACG",
+        "organismo": "Solanum lycopersicum",
+        "longitud": 77,
+        "funcion": "Metabolismo de glucosa",
         "es_mutante": false,
         "secuencia_mutante": null
     },
     "GEN002": {
-        "nombre": "ARXKH",
-        "secuencia": "TTGTTCTACGGCTGTGTGGTTCCGTTGACACTCGGTTACTCGATTATCCCCTTTAAGCAACCCCGGACAGGTTACAAGAAAAGTGATTTATAAGCACGGGCACTCACATTAGCTGCTATTTTGTAAAATTGATGGACTACGATCAGTACTGCGGCGTGTACGGCT",
-        "organismo": "Halobacterium salinarum",
-        "longitud": 165,
-        "funcion": "Regulación epigenética",
+        "nombre": "OLOUC",
+        "secuencia": "CACTAATGTAAATCTAGGAGTCTCTTCAAAAGAGCTGGTCGGACCGATGAGGCCCCCAATCAACGCAGATATCTACGGAACGGGGATAGCGACCACCGAGATGTAAAGATCAGCCCTAGTATCAGGTGACTTCCGCTTGGGCAGCATGTGATCAAGCGCCTCCAAACCTAA",
+        "organismo": "Mus musculus",
+        "longitud": 171,
+        "funcion": "Activación de linfocitos",
+        "es_mutante": false,
+        "secuencia_mutante": "CACTAATGTAAATCTAGGAGTCTCTTCAAAAGAGCGGGTCGGACCGATGAGGCCCCCAATCAACGCAGATATCTACGGAACGGGGATAGCGACCACCGAGATGTAAAGATCAGCCCTAGTATCAGGTGACTTCCGCTTGGGCAGCATGTGATCAAGCGCCTCCAAACCTAA"
+    },
+    "GEN003": {
+        "nombre": "JAFIQ",
+        "secuencia": "TGTAAACTACATCGCTAACCATTTTACGGGGGACGCCCTGCGCTGCTAGCACTCTCGGTGCGGGATGGCTGACGCTTGTCCAGAGTTTCAGCAAATTTCTCTCATTGATGTATAGACGGACCGGTGCTAGCAAGGGGTCGACGTGGGGACCATCCAGTAGGAGAAAGAATACGATGGTGTCGGGTAATTTA",
+        "organismo": "Strongylocentrotus purpuratus",
+        "longitud": 191,
+        "funcion": "Empaquetamiento del ADN",
         "es_mutante": false,
         "secuencia_mutante": null
     },
-    "GEN003": {
-        "nombre": "VMUYN",
-        "secuencia": "CCAGTAAGTTGATCCTGTAGTAACTTCTGTACGGGCGACCGCTCCAGGCCAGTGTCTGACTGCCAATATGGCCGAAGCGCTTGGGGCCACACAAGCAA",
-        "organismo": "Pseudomonas aeruginosa",
-        "longitud": 98,
-        "funcion": "Migración celular",
-        "es_mutante": false,
-        "secuencia_mutante": "CCAGTAAGTTGATCCTGTAGTAACTTCTGTACGGGCGACCGCTCCTGGCCAGTGTCTGACTGCCAATATGGCCGAAGCGCTTGGGGCCACACAAGCAA"
-    },
     "GEN004": {
-        "nombre": "DHTVB",
-        "secuencia": "TTGACGATAGGTCCTCGGGCTCTCACACCGATTGTTTCTTTCACGGCAGTCTGCTCGACCGTCGCGGTTCCAGATCTCCGGGTGCCTGGGAGGTTAGATAGTGGAAATTCTGCCCCGATAGTTCTCGGAAAAGCTCTGAACAACCTCATGCTCGAAC",
-        "organismo": "Toxoplasma gondii",
-        "longitud": 157,
-        "funcion": "Reparación de doble cadena de ADN",
+        "nombre": "ICSVL",
+        "secuencia": "AGACGGTCCGAATTTCCCACAGTTTGTGATGACCAATCAGAGAATCTGCCCGCGTACCATCTCCCAATCTCGATTCTGGAAAAGCAAATCCCATTAGTCGGGAACTGAAGATGAAATTTTAACTCGAACCGCCCTGATTGGGACGCTTAAAACGTCAGTTGGA",
+        "organismo": "Streptococcus pneumoniae",
+        "longitud": 163,
+        "funcion": "Reparación de mutaciones",
         "es_mutante": false,
         "secuencia_mutante": null
     },
     "GEN005": {
-        "nombre": "KNIIZ",
-        "secuencia": "ATACGACGTCAATAACGTAA",
-        "organismo": "Drosophila melanogaster",
-        "longitud": 20,
-        "funcion": "Replicación del ADN",
-        "es_mutante": false,
-        "secuencia_mutante": null
-    },
-    "GEN006": {
-        "nombre": "CFFJJ",
-        "secuencia": "TACTGTGGACGGATCTTCGTTCGACTGACCAACTGCCTACTCAAGCTCGCAATCCAGGTGGCGCGTAGCCTGAC",
-        "organismo": "Sus scrofa",
-        "longitud": 74,
-        "funcion": "Síntesis de ferrocitocromo",
-        "es_mutante": false,
-        "secuencia_mutante": null
-    },
-    "GEN007": {
-        "nombre": "QNCKA",
-        "secuencia": "TCGCCGTACGGTGCTGACCT",
-        "organismo": "Macaca mulatta",
-        "longitud": 20,
+        "nombre": "RVGXN",
+        "secuencia": "CCTATAGGGGGGTCCCGCCCCGACCAGCTCCGAATAAGATTCGTCCCATTACGGGGCATTCCATGACTTATTGACTTTCCAAACTTTGTTATCATACTCACTTGAACCAAGTGGTGTGAGGAGGGA",
+        "organismo": "Mus musculus",
+        "longitud": 126,
         "funcion": "Síntesis de proteínas",
         "es_mutante": false,
         "secuencia_mutante": null
     },
+    "GEN006": {
+        "nombre": "TCXDL",
+        "secuencia": "GCTTGATAACTCCCATCCCAACCTCGGATTGTAGCTCGACCCCATGT",
+        "organismo": "Pseudomonas aeruginosa",
+        "longitud": 47,
+        "funcion": "Síntesis de vitaminas",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN007": {
+        "nombre": "MSUDQ",
+        "secuencia": "CCCTCTTGAGAGCCGATTGTACATGTGGTTAACAGGTGCGAAAACTGTGCAGGGGTAATGCCATTGTCATTGTGACTAGATTCTGCGCGATACAACACGCGGGGAACGAGCCACCAGGAAGCGGTGGGTGAGAATAAGT",
+        "organismo": "Bacillus subtilis",
+        "longitud": 139,
+        "funcion": "Formación de lisosomas",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
     "GEN008": {
-        "nombre": "YKKTC",
-        "secuencia": "GCTGCGGTGATATGCTCGGAGGTTAATCTTCTTC",
-        "organismo": "Arabidopsis thaliana",
-        "longitud": 34,
-        "funcion": "Reparación del ADN",
-        "es_mutante": false,
-        "secuencia_mutante": null
-    },
-    "GEN009": {
-        "nombre": "TNELA",
-        "secuencia": "CCATCGCTAGGATATTAGCAAACTATCACAGTAAGACACATTATGCCGGCGCATAACTCTGCTTTTGTTCAAACACAAATAATGTGCTAGAGGTTTTGGACTGCATCCGGCCGCAAGAGCCATATGGCCATATAAATTCCGACCTGTGGCAGCGAAAGGCGGAAGCCCTT",
-        "organismo": "Apis mellifera",
-        "longitud": 170,
-        "funcion": "Síntesis de ácido láctico",
-        "es_mutante": false,
-        "secuencia_mutante": null
-    },
-    "GEN010": {
-        "nombre": "GVPLW",
-        "secuencia": "ATATCGACAATGAATCCAACTCCAAGCCCAGATTGCTCTCGATTCACTGACCCTACACTACTTATAGTATTGGAGGGCAGACCTGAGCCGTCGAGACTTGGGCTTTTCCTTAGCAAAGCGTACAGTCCAACATATCGAAGCTATAACTC",
-        "organismo": "Macaca mulatta",
-        "longitud": 149,
-        "funcion": "Síntesis de histonas",
-        "es_mutante": false,
-        "secuencia_mutante": null
-    },
-    "GEN011": {
-        "nombre": "CIJCB",
-        "secuencia": "TAGCGGTCTGCCCTGTGCCAGGTCGGTGCCAACATTGACGATTAGCGTGCAACATGCGTCATCAGACTGCAG",
-        "organismo": "Streptococcus pneumoniae",
-        "longitud": 72,
-        "funcion": "Regulación de la permeabilidad de membrana",
-        "es_mutante": false,
-        "secuencia_mutante": null
-    },
-    "GEN012": {
-        "nombre": "GGKOI",
-        "secuencia": "CTCCACTGGCTCTCCATCACCCGAAACTTTACATAGTGTTATGAAATACTCTGAGAGGTGTGCTGCGCAAGGGCGCTT",
-        "organismo": "Penicillium chrysogenum",
-        "longitud": 78,
-        "funcion": "Respiración celular",
-        "es_mutante": false,
-        "secuencia_mutante": "CTCCACTGGCTCTCCATCACCCGAAACTTTACATAGTGTTATGAAATACTCTCAGAGGTGTGCTGCGCAAGGGCGCTT"
-    },
-    "GEN013": {
-        "nombre": "TZCCV",
-        "secuencia": "GAGTGCAGGATCTACGGTCGTGGTGGTACTAAATTAGGATGCGAGCAGAGGGCTCCGGAGGATGCCCGTAAGGACTACGATCTGGTTTAGGGTATAGTG",
-        "organismo": "Rattus norvegicus",
-        "longitud": 99,
+        "nombre": "LJZKA",
+        "secuencia": "CCTGCAAAACCGGGCTTCAGATTAGAAGTCTAATCCTCGTCTGTGA",
+        "organismo": "Aspergillus niger",
+        "longitud": 46,
         "funcion": "Migración celular",
         "es_mutante": false,
         "secuencia_mutante": null
     },
-    "GEN014": {
-        "nombre": "BFXKY",
-        "secuencia": "ACTGGTGGCGGGGTAAGGTTTACATATCTTCACCGCCCTTAGTGCGTAGGACCTCGATTTGAATGCGGCCCATTAGCGGGTAAACATTGTGGTGACATTCCCACGCCCCAAATCGATGTGTTCAGGAAGGGAGCCCC",
-        "organismo": "Zea mays",
-        "longitud": 137,
-        "funcion": "Síntesis de ribosomas",
+    "GEN009": {
+        "nombre": "RKHZY",
+        "secuencia": "CCTGATGAAGTCATACTGCTAACCAACTCTGCGTCTG",
+        "organismo": "Leishmania donovani",
+        "longitud": 37,
+        "funcion": "Síntesis de ferrocitocromo",
         "es_mutante": false,
         "secuencia_mutante": null
     },
+    "GEN010": {
+        "nombre": "JXONY",
+        "secuencia": "GTACTCAAGAGTAAGGGACGAGATTTTTTATCTAAGACCAGGCAGACAATA",
+        "organismo": "Synechocystis sp. PCC 6803",
+        "longitud": 51,
+        "funcion": "Replicación del ADN",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN011": {
+        "nombre": "FOIZZ",
+        "secuencia": "TCAACCGGGGCGCCGATGCA",
+        "organismo": "Anopheles gambiae",
+        "longitud": 20,
+        "funcion": "Síntesis de clorofila",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN012": {
+        "nombre": "XQCOU",
+        "secuencia": "ATGTTGAGAACGTATTTGAGGTACTTCGCAACTCGAGGATGCATCGGACATTGGATGCCGGATTATTTGACAGAGATTGAGGGCATGCCACGTCCTTGGCATAGTTGAAGTCGGCCCTCTCTTTGGATCCTTGACCGGGAATTTACACTGCTAACTCTGCGGCTAT",
+        "organismo": "Staphylococcus aureus",
+        "longitud": 166,
+        "funcion": "Transporte de oxígeno",
+        "es_mutante": false,
+        "secuencia_mutante": "ATGTTGAGAACGTATTTGAGGTACTTCGCAACTCGAGGATGCATCGGACATTGGATGCAGGATTATTTGACAGAGATTGAGGGCATGCCACGTCCTTGGCATAGTTGAAGTCGGCCCTCTCTTTGGATCCTTGACCGGGAATTTACACTGCTAACTCTGCGGCTAT"
+    },
+    "GEN013": {
+        "nombre": "RQEKQ",
+        "secuencia": "TAGAAAGAAGCAATGGATACCGGGGGTCTCTTGCACCAGGTCACCAGCTAAATCCCACAAGCACATCAGGTAGATTTAAAGTCCGAATTGGTCGCGTCAACGCGTCGGGTAAGTGCCAACCGTATCAGTCAGATGTTTCGAAATAATTTTTTTGTCGTACCGCACGGTGTTTTTAGGGTACAGGTGAGT",
+        "organismo": "Salmonella enterica",
+        "longitud": 189,
+        "funcion": "Síntesis de ARN polimerasa",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN014": {
+        "nombre": "ILZYT",
+        "secuencia": "TTCTGACGAAGCCCCTGAGATCTGTTCGGTGCAGGACAAAGCTGCCTTTTGGAGAGACTATTGGCGGAGGTCTCTATTGAGGCCAA",
+        "organismo": "Leishmania donovani",
+        "longitud": 86,
+        "funcion": "Activación de receptores",
+        "es_mutante": false,
+        "secuencia_mutante": "TTCTGACGAAGCCCCTGAGATCTGTTCGGTGCAGGACAACGCTGCCTTTTGGAGAGACTATTGGCGGAGGTCTCTATTGAGGCCAA"
+    },
     "GEN015": {
-        "nombre": "YULRA",
-        "secuencia": "CTGTATCGTACCTTGGTTGGATCACTCTATTCAGCCCGTCTGCTCTTTACCAGTGGGCCGCAATTA",
-        "organismo": "Canis lupus familiaris",
-        "longitud": 66,
-        "funcion": "Movimiento celular",
+        "nombre": "KOHSS",
+        "secuencia": "AGCGACCAGAATACGATC",
+        "organismo": "Macaca mulatta",
+        "longitud": 18,
+        "funcion": "Degradación de proteínas",
         "es_mutante": false,
         "secuencia_mutante": null
     },
     "GEN016": {
-        "nombre": "DFTOY",
-        "secuencia": "TACGAACCCATCGTGTTGTTAATTATTTGTTTTCTAAACATAGACCATGTACGTACGATGGTCCCACAGTGCCGAGTAAAAACAC",
-        "organismo": "Chlamydomonas reinhardtii",
-        "longitud": 85,
-        "funcion": "Síntesis de colágeno",
+        "nombre": "QZQKT",
+        "secuencia": "GGGATATCCCTTAATCAATCTAGGT",
+        "organismo": "Toxoplasma gondii",
+        "longitud": 25,
+        "funcion": "Fotosíntesis anoxigénica",
         "es_mutante": false,
         "secuencia_mutante": null
     },
     "GEN017": {
-        "nombre": "BBEVD",
-        "secuencia": "TAGAGGACATTGCAAAGTGCGGCTCACCGAGGCCGCCGGTCTGCCGTACCAAGCGCGGCATCTTCCACGGTCGCCATTAAACTTGTATGCGGGCACCCAACTGTAAGTCTATCCGTTGTCACTCCATCATAGGAGAGGACCCTACACACGCATAGGCTTATAGGAACGACACAGCCTAACCCTAAACGTAGAATTCCA",
-        "organismo": "Mus musculus",
-        "longitud": 198,
+        "nombre": "DEHJS",
+        "secuencia": "GTGAATGCATGTTTCTTGTTACGGATCGTGCTTAATTCGTGAGATTAAGCGGATCGACCGAATAGATTTGGAGCTAATTCCATACAGATGATACGTAGTACTCAAGCGTTTATC",
+        "organismo": "Lactobacillus acidophilus",
+        "longitud": 114,
         "funcion": "Regulación del pH intracelular",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN018": {
+        "nombre": "KXDLR",
+        "secuencia": "TCACTGAGGCGTCGGACGCACATTGTTGAAGAGGGATGACTTGAGCTTGATCCGCTAGGCTAGTCGC",
+        "organismo": "Homo sapiens",
+        "longitud": 67,
+        "funcion": "Movimiento flagelar",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN019": {
+        "nombre": "IIIJU",
+        "secuencia": "AAAGGTATCGTTCCACTTTCTCTTGCGAAAGATTGATTCTTTAGATAGATGAGAGAAATTAATTGTTCGAATTCCTAAGGATTAGTCCTTCAAATCCTAAACCCCTTTTACGTTAGAATATGGGCAGCCGAATTCCGAGAGATTGCGAAGCTGGAGAGTGAGGTGTGGATGTCCTTATC",
+        "organismo": "Pseudomonas aeruginosa",
+        "longitud": 179,
+        "funcion": "Síntesis de glucógeno",
+        "es_mutante": false,
+        "secuencia_mutante": "AAAGGTATCGTTCCACTTTCTCTTGCGAAAGATTGATTCTTTAGATAGATGAGAGAAATTAATTGTTCGAATTCCTAAGGATTAGTCCTTCAAATCCTAAACCCCTTTTACGTTAGAATATGGGCAGCCGAATTCCGAGAGATTGCGAAGCTGGAGAGTGAGGTGTGGATGTCCTTATT"
+    },
+    "GEN020": {
+        "nombre": "QLCHO",
+        "secuencia": "GTCTCCTACTCTCTGCCGCG",
+        "organismo": "Caenorhabditis elegans",
+        "longitud": 20,
+        "funcion": "Síntesis de ferredoxina",
+        "es_mutante": false,
+        "secuencia_mutante": null
+    },
+    "GEN021": {
+        "nombre": "Prueba",
+        "secuencia": "ACCGTATTTTTTTTTT",
+        "organismo": "Homo sapiens",
+        "longitud": 16,
+        "funcion": "a",
         "es_mutante": false,
         "secuencia_mutante": null
     }

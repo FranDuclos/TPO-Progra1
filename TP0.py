@@ -2,7 +2,7 @@
 import CrearGenes
 import os
 import json
-
+import re
 
 def crear_base_datos(path, json_path):  
     """
@@ -176,7 +176,7 @@ def visualizar_genes(diccionario):
                 break
             
             if opcion == "TODOS":
-                matriz = [encabezados]
+                matriz = []
                 for gen_id, datos in diccionario.items():
                     fila = [
                         gen_id,
@@ -186,11 +186,14 @@ def visualizar_genes(diccionario):
                         datos["longitud"],
                         datos["funcion"],
                         datos["es_mutante"],
-                        datos["secuencia_mutante"][:20] if datos["secuencia_mutante"] else None
+                        datos["secuencia_mutante"][:20] + "..." if datos["secuencia_mutante"] else None
                     ]
                     matriz.append(fila)
-                print(f"\n✔ Matriz creada con {len(matriz)-1} genes")
-                print(matriz)
+                print(f"\n✔ Matriz creada con {len(matriz)} genes\n")
+                print(" | ".join(encabezados))
+                print("-" * 150)
+                for fila in matriz:
+                    print(" | ".join(str(x) for x in fila))
             
             if opcion in ids:
                 datos = diccionario[opcion]
@@ -199,16 +202,18 @@ def visualizar_genes(diccionario):
                     [
                         opcion,
                         datos["nombre"],
-                        datos["secuencia"][:20],
+                        datos["secuencia"][:20] + "...",
                         datos["organismo"],
                         datos["longitud"],
                         datos["funcion"],
                         datos["es_mutante"],
-                        datos["secuencia_mutante"][:20] if datos["secuencia_mutante"] else None
+                        datos["secuencia_mutante"][:20] + "..." if datos["secuencia_mutante"] else None
                     ]
                 ]
-                print(f"\n✔ Matriz creada para el gen {opcion}")
-                print(matriz)
+                print(f"\n✔ Matriz creada para el gen {opcion}\n")
+                print(" | ".join(encabezados))
+                print("-" * 150)
+                print(" | ".join(str(x) for x in fila))
             else:
                 print("❌ ID no encontrado. Intenta nuevamente.")
                 
@@ -322,7 +327,7 @@ def agregar_genes(diccionario, organismos_vaidos, caracteres_validos, json_path)
         print(f"Error inesperado: {e}")
         return diccionario
 
-def modificar_genes(diccionario, organismos_vaidos, caracteres_validos, json_path):
+def modificar_genes(diccionario, organismos_vaidos, json_path):
     """
     Eliminar/Modificar gen/es
     Guardado automático en JSON
@@ -348,7 +353,6 @@ def modificar_genes(diccionario, organismos_vaidos, caracteres_validos, json_pat
                 continue
         
             datos = diccionario[gen_id_input]
-            print("\n{'='*40}")
             print(f"DATOS ACTUALES DEL GEN {gen_id_input}")
             print(f"Nombre: {datos['nombre']}")
             print(f"Secuencia: {datos['secuencia']}")
@@ -361,7 +365,7 @@ def modificar_genes(diccionario, organismos_vaidos, caracteres_validos, json_pat
            
             resp = input(f"\n¿Qué deseas hacer con el gen {gen_id_input}? (modificar/borrar/cancelar)").lower()
 
-            if resp == "cancerar":
+            if resp == "cancelar":
                 print("Operación cancelada.")
                 continue
 
@@ -392,8 +396,8 @@ def modificar_genes(diccionario, organismos_vaidos, caracteres_validos, json_pat
                         break
 
                 while True:
-                    secuencia = input("Secuencia: ")
-                    if not all (c in caracteres_validos for c in secuencia) or len(secuencia) < 3:
+                    secuencia = input("Secuencia: ").upper()
+                    if not re.match(r'^[ATCG]{3,}$', secuencia):
                         print("✘ Secuencia no validos, ingrese de nuevo: ")
                     else:
                         break
@@ -611,8 +615,8 @@ def main():
     caracteres_validos = ("A", "C", "G", "T")
 
     while True:
-            diccionario = convertir_a_diccionario(path)
-            opciones = 4
+            if os.path.exists(json_path):
+                diccionario = cargar_json(json_path)
             print()
             print("---------------------------")
             print("MENÚ ...         ")
@@ -641,7 +645,7 @@ def main():
                     diccionario = cargar_json(json_path)
                 
                 if diccionario is None:
-                    print("\n⚠️ No hay datos disponibles.")
+                    print("\n No hay datos disponibles.")
                     print("   Primero cree la base de datos (Opción 1)")
                     continue
                 
@@ -652,12 +656,15 @@ def main():
                     diccionario = agregar_genes(diccionario, organismos_vaidos, caracteres_validos, json_path)
                 
                 elif opcion == "4":
-                    diccionario = modificar_genes(diccionario, organismos_vaidos, caracteres_validos, json_path)
+                    diccionario = modificar_genes(diccionario, organismos_vaidos, json_path)
                 
                 elif opcion == "5":
                     analizar_genes(diccionario)
+                
+                elif opcion == "6":
+                    guardar_a_json(diccionario, json_path)
         
             else:
-                print("❌ Opción no válida. Intente nuevamente.")
+                print("Opción no válida. Intente nuevamente.")
             
 main()
