@@ -191,11 +191,11 @@ def visualizar_genes(diccionario):
                     matriz.append(fila)
                 print(f"\n✔ Matriz creada con {len(matriz)} genes\n")
                 print(" | ".join(encabezados))
-                print("-" * 150)
-                for fila in matriz:
-                    print(" | ".join(str(x) for x in fila))
+                print("-" * 130)
+                for fila in matriz:  # Imprimir cada fila
+                    print(" | ".join(str(item) for item in fila))
             
-            if opcion in ids:
+            elif opcion in ids:
                 datos = diccionario[opcion]
                 matriz = [
                     encabezados,
@@ -212,8 +212,8 @@ def visualizar_genes(diccionario):
                 ]
                 print(f"\n✔ Matriz creada para el gen {opcion}\n")
                 print(" | ".join(encabezados))
-                print("-" * 150)
-                print(" | ".join(str(x) for x in fila))
+                print("-" * 130)
+                print(" | ".join(str(item) for item in matriz[1]))
             else:
                 print("❌ ID no encontrado. Intenta nuevamente.")
                 
@@ -280,11 +280,11 @@ def agregar_genes(diccionario, organismos_vaidos, caracteres_validos, json_path)
                     break
 
             while True:
-                secuencia = input("Secuencia: ").upper()
-                if not all (c in caracteres_validos for c in secuencia) or len(secuencia) < 3:
-                    print("✘ Secuencia no validos, ingrese de nuevo: ")
-                else: 
-                    break
+                    secuencia = input("Secuencia: ").upper()
+                    if not re.match(r'^[ATCG]{3,}$', secuencia):
+                        print("✘ Secuencia no validos, ingrese de nuevo: ")
+                    else:
+                        break
 
             longitud = len(secuencia)
 
@@ -547,17 +547,6 @@ def calcular_contenido_nucleotido(secuencia):
     gc = secuencia.count('G') + secuencia.count('C')
     at = secuencia.count('A') + secuencia.count('T')
     return (gc / len(secuencia)) * 100, (at / len(secuencia)) * 100
-
-def predecir_proteína(secuencia):
-    #Recorrer secuencia en 3 en 3.
-    #Usar o diccionario o txt para que cod cada codón.
-    #Mostar posible prot
-
-    pass
-
-
-
-
 
 def main():
     path = "registros.txt"

@@ -1,6 +1,6 @@
 #Crear base de genes
 import random
-import os
+
 def darIdIncremental(id):
     if id < 10:
         return "00" + str(id)
